@@ -2,7 +2,7 @@
 copiar_ps1:
   file.managed:
     - name: C:\salt\scripts\script.ps1
-    - source: salt://script.ps1
+    - source: salt://files/script.ps1
     - makedirs: True
 
 # Paso 2: Ejecutar el archivo PS1 usando PowerShell

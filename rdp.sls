@@ -8,14 +8,14 @@ guardar_credenciales:
 copiar_rdp:
   file.managed:
     - name: C:\salt\scripts\mirdp.rdp
-    - source: salt://mirdp.rdp
+    - source: salt://files/mirdp.rdp
     - makedirs: True
 
 # Paso 3: Copiar el script PowerShell
 copiar_script:
   file.managed:
     - name: C:\salt\scripts\scriptrdp.ps1
-    - source: salt://scriptrdp.ps1
+    - source: salt://files/scriptrdp.ps1
     - makedirs: True
 
 # Paso 4: Ejecutar el script PowerShell
