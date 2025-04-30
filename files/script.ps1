@@ -20,7 +20,7 @@ if (-Not (Test-Path $psExecPath)) {
 }
 # Solicitar el nombre de usuario y contraseña del usuario que va a ejecutar el proceso
 $userName = "prueba"  # Reemplazar con el nombre de usuario deseado
-$password = ConvertTo-SecureString "Usuario!" -AsPlainText -Force
+$password = "Usuario!"
 
 # Obtener el session_id
 $session_id = (query user prueba | Select-String -Pattern '(\d+)\s+Active').Matches[0].Groups[1].Value
