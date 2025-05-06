@@ -31,5 +31,6 @@ zabbix_plugins_instalacion:
 zabbix_agent_service:
   service.running:
     - name: Zabbix Agent 2
+    - enable: True
     - require:
       - cmd: zabbix_plugins_instalacion
