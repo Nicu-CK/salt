@@ -18,7 +18,7 @@ if (-Not (Test-Path $psExecPath)) {
     Write-Host "PsExec instalado en C:\Windows\System32\PsExec.exe"
 }
 # Ruta al CSV
-$csvPath = "C:\salt\scripts\archivo.csv"
+$csvPath = "C:\salt\scripts\datos.csv"
 
 # Cargar los datos del CSV
 $datos = Import-Csv -Path $csvPath
