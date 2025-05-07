@@ -1,6 +1,6 @@
 LinuxGroup ----> Archivo donde se guardaran los equipos Linux con sus credenciales para instalar salt-minion mediante salt-ssh.
 
-InstallMinionLinux-----> SLS para la instalacion de del salt-minion.
+InstallMinionLinux-----> SLS para la instalacion del salt-minion.
 
 zabbixlinux/win------> SLS para la instalacion de los agentes zabbix una vez que tengamos los minions preparados.
 
