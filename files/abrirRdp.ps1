@@ -5,8 +5,8 @@ $csvPath = "C:\salt\scripts\datos.csv"
 $datos = Import-Csv -Path $csvPath
 
 # Nombre del servidor y contraseña comunes
-$servidorFijo = "10.34.1.98"
-$contrasenaFija = "12345678"
+# $servidorFijo = "10.34.1.98"
+# $contrasenaFija = "12345678"
 
 # Recorrer cada fila
 foreach ($fila in $datos) {
@@ -14,18 +14,18 @@ foreach ($fila in $datos) {
     $shouldRun = $fila.ShouldRun
     $password = $fila.Password
     $domain = $fila.Environment
-
+    $server = $fila.ServerName
     # Solo ejecutar si ShouldRun está en 'true' o 'yes'
     if ($shouldRun -match "^(?i)true|yes$") {
         Write-Host "Conectando a $usuario@$servidorFijo"
 
         # Guardar credenciales (esto almacena las credenciales para RDP)
-        cmdkey /generic:"$servidorFijo" /user:$usuario /pass:$password
+        cmdkey /generic:"$server" /user:$usuario /pass:$password
 
         # Crear un archivo .rdp temporal
         $rdpPath = "$env:TEMP\$usuario.rdp"
         @"
-full address:s:$servidorFijo
+full address:s:$server
 username:s:$domain\$usuario
 authentication level:i:2
 prompt for credentials:i:0

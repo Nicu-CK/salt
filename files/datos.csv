@@ -1,3 +1,3 @@
 Environment,UserName,Password,ServerName,App,Type,ShouldRun,WorkingDirectory,Path,Arguments,Consumers,Remarks
-PRUEBA,prueba,Usuario!,PRUEBA,Controller,EXE,YES,C:\Windows\System32,C:\Windows\System32\notepad.exe,,1,
-PRUEBA,prueba,Usuario!,PRUEBA,Controller,EXE,YES,C:\Users\prueba\Documents,C:\Users\prueba\Documents\programa.bat,,1,
+PRUEBA,prueba,Usuario!,10.34.1.98,Controller,EXE,YES,C:\Windows\System32,C:\Windows\System32\notepad.exe,,1,
+PRUEBA,prueba,Usuario!,10.34.1.98,Controller,EXE,YES,C:\Users\prueba\Documents,C:\Users\prueba\Documents\programa.bat,,1,

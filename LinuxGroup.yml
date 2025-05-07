@@ -1,0 +1,6 @@
+cliente-linux:
+  host: 10.34.1.108
+  user: cliente
+  passwd: 39072
+  sudo: True
+  tty: True
