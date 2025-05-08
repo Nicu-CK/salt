@@ -1,71 +1,84 @@
-# 🔧 SaltStack Automation for RDP and Minion Deployment
+# 🔧 Automatización con SaltStack: RDP y Despliegue de Minions
 
-Este repositorio contiene un conjunto de scripts y estados SLS diseñados para automatizar:
+Este repositorio contiene scripts y estados SLS diseñados para automatizar:
 
-- La instalación de agentes `salt-minion` y `zabbix` en equipos Linux y Windows.
+- La instalación de los agentes `salt-minion` y `zabbix` en sistemas Linux y Windows.
 - La conexión automática a sesiones RDP.
-- La ejecución automática de aplicaciones gráficas tras la conexión RDP.
+- La ejecución de aplicaciones gráficas tras la conexión RDP.
 
----
-##  Uso del programa 
-### Windows 
-### Modo de funcionamiento
-
--Ejecutar el script `apprdp.sh` que deberia de estar en la carpeta de donde estan los programas de salt . Hace falta que estén los minions en los equipos instalados y conectados al master para que funcione.
-
--Para modificar cualquiera los programas que se quieran iniciar se tiene que cambiar el archivo /files/datos.csv siguiendo su estructura
+> ⚠️ **Importante**: Los archivos `.sls` deben colocarse en el directorio `/srv/salt`, que es la ubicación por defecto utilizada por SaltStack. Si deseas usar otro directorio, recuerda modificar los scripts `.sh` y especificar la nueva ruta.
 
 ---
 
-## 📂 Estructura Programa RDP
+## 🚀 Uso del Programa
 
-### 📄 `iniciarRdp.sls`
-Estado SLS que inicia sesiones RDP necesarias usando el script `/files/abrirRdp.ps1` y un archivo CSV proporcionado.
+### 🪟 Windows – Automatización de RDP y Aplicaciones
 
-### 📄 `iniciarAplicacion.sls`
-Estado SLS para lanzar aplicaciones automáticamente tras la conexión RDP, mediante `/files/abrirAplicaciones.ps1` y el archivo CSV correspondiente.
+#### 🔄 Funcionamiento
 
-### 🖥️ `apprdp.sh`
-Script Bash que ejecuta en secuencia las conexiones RDP y la apertura de aplicaciones, combinando ambos SLS.
-
-
-### 📄 `/files/dato.csv`
-Donde estan los datos de todas las aplicaciones que se quieran abrir en una máquina  
-
-### 📄 `/files/abrirAplicaciones.ps1`
-Programa ps1 que abre las aplicaciones que halla en el csv en un equipo como admin 
-
-### 📄 `/files/abrirRdp.ps1`
-Con el archivo csv se abren todas la conexiones rdp desde un equipo externo (admin) al servidor para abrir los usuarios activos necesarios para el funcionamiento de las aplicaciones 
+1. Ejecuta el script `apprdp.sh` desde el directorio donde se encuentran los programas de Salt.
+2. Asegúrate de que los minions estén instalados en los equipos y conectados al master.
+3. Para definir qué aplicaciones se abrirán automáticamente, edita el archivo `/files/datos.csv` siguiendo su estructura.
 
 ---
 
-# 🔧 Instalar minion salt con salt ssh y csv
+## 📁 Estructura del Proyecto
 
-Para la instalación de los minions tenemos un csv en `/files/hostsLinux.csv` en el que estarán los equipos a los que se le quiera instalar el minion de salt , y solo hay que ejecutar `minionLinux.sh` (Si el archivo `LinuxGroup.yml` no existe se crea solo)
+### 📂 Automatización RDP
 
-## 📂 Estructura Instalación Minions Linux
+- **`iniciarRdp.sls`**  
+  Ejecuta sesiones RDP usando el script PowerShell `abrirRdp.ps1` y un archivo CSV de configuración.
 
-### 🐧 `minionLinux.sh`
-Script Bash que añade automáticamente los hosts Linux desde un archivo CSV al `LinuxGroup.yml`. 
+- **`iniciarAplicacion.sls`**  
+  Lanza automáticamente aplicaciones gráficas tras conectarse por RDP, utilizando `abrirAplicaciones.ps1`.
 
-### 📄 `LinuxGroup.yml`
-Archivo donde se almacenan los equipos Linux junto con sus credenciales necesarias para instalar `salt-minion` mediante `salt-ssh`.
+- **`apprdp.sh`**  
+  Script Bash que ejecuta ambos estados SLS en secuencia: conexión RDP y apertura de aplicaciones.
 
-### 📄 `InstallMinionLinux.sls`
-Estado SLS para la instalación automática del `salt-minion` en equipos Linux.
+- **`/files/datos.csv`**  
+  Archivo CSV con los datos de las máquinas y aplicaciones a iniciar.
 
-### 📄 `InstallMinionLinux.sls`
-Estado SLS para la instalación automática del `salt-minion` en equipos Linux.
+- **`/files/abrirRdp.ps1`**  
+  Script PowerShell que, a partir del CSV, abre sesiones RDP desde una máquina administrativa externa.
+
+- **`/files/abrirAplicaciones.ps1`**  
+  Script PowerShell que abre las aplicaciones definidas en el CSV como administrador en la máquina destino.
 
 ---
 
-# 🔧 Instalar zabbix con salt
+## 🧩 Instalación de Minions Salt (Linux)
 
-Para instalar zabbix con salt solo hay que ejecutar `zabbixlinux.sls`(Hecho para sistemas Debian, modificar para otra distro) o `zabbixwin.sls` dependiendo si es la para linux o windows con el nombre de la máquina a la que se le quiera aplicar 
+### 📦 Instalación vía `salt-ssh` y CSV
 
-## 📂 Estructura Instalación Minions Linux
+- Utiliza el archivo `/files/hostsLinux.csv` para definir los equipos donde instalar `salt-minion`.
+- Ejecuta el script `minionLinux.sh`. Si no existe `LinuxGroup.yml`, se generará automáticamente.
 
-### 📄 `zabbixlinux.sls` / `zabbixwin.sls`
-Estados SLS para instalar los agentes Zabbix en sistemas Linux o Windows, una vez configurados los minions.
+### 📁 Archivos Relevantes
+
+- **`minionLinux.sh`**  
+  Script que agrega los hosts definidos en el CSV a `LinuxGroup.yml` y lanza la instalación del minion.
+
+- **`LinuxGroup.yml`**  
+  Contiene la lista de hosts Linux y sus credenciales para realizar la instalación por `salt-ssh`.
+
+- **`InstallMinionLinux.sls`**  
+  Estado SLS para la instalación automatizada del agente `salt-minion` en sistemas Linux.
+
+---
+
+## 📡 Instalación de Agentes Zabbix
+
+### ⚙️ Estados SLS para Zabbix
+
+- Ejecuta `zabbixlinux.sls` (para sistemas Debian) o `zabbixwin.sls` (para Windows), indicando el ID del minion destino.
+
+### 📁 Archivos Relevantes
+
+- **`zabbixlinux.sls`** / **`zabbixwin.sls`**  
+  Estados SLS que instalan los agentes Zabbix en sistemas Linux o Windows. *Nota: el archivo para Linux está diseñado para distribuciones basadas en Debian. Modifícalo según tu distribución si es necesario.*
+
+---
+
+¿Quieres que también cree una tabla resumen con los scripts y su función?
+
 
