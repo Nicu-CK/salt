@@ -79,6 +79,4 @@ Este repositorio contiene scripts y estados SLS diseñados para automatizar:
 
 ---
 
-¿Quieres que también cree una tabla resumen con los scripts y su función?
-
 
