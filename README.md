@@ -11,7 +11,7 @@ Este repositorio contiene un conjunto de scripts y estados SLS diseñados para a
 ### Windows 
 ### Modo de funcionamiento
 
--Ejecutar el script apprdp.sh que deberia de estar en la carpeta de donde estan los programas de salt 
+-Ejecutar el script `apprdp.sh` que deberia de estar en la carpeta de donde estan los programas de salt . Hace falta que estén los minions en los equipos instalados y conectados al master para que funcione.
 
 -Para modificar cualquiera los programas que se quieran iniciar se tiene que cambiar el archivo /files/datos.csv siguiendo su estructura
 
@@ -42,7 +42,7 @@ Con el archivo csv se abren todas la conexiones rdp desde un equipo externo (adm
 
 # 🔧 Instalar minion salt con salt ssh y csv
 
-Para la instalación de los minions tenemos un csv en `/files/hostsLinux.csv` en el que estarán los equipos a los que se le quiera instalar el minion de salt , y solo hay que ejecutar minionLinux.yml
+Para la instalación de los minions tenemos un csv en `/files/hostsLinux.csv` en el que estarán los equipos a los que se le quiera instalar el minion de salt , y solo hay que ejecutar `minionLinux.sh` (Si el archivo `LinuxGroup.yml` no existe se crea solo)
 
 ## 📂 Estructura Instalación Minions Linux
 
