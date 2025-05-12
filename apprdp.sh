@@ -1,6 +1,8 @@
 #!/bin/bash
+$serverRdp="win-11"
+$serverAplicaciones="win-srv"
 echo "Running SLS for RDP on the Windows 11 PC..."
-salt 'win-11' state.apply iniciarRdp
+salt '$serverRdp' state.apply iniciarRdp
 
 # Check if the execution of the RDP SLS was successful
 if [ $? -eq 0 ]; then
@@ -16,7 +18,7 @@ sleep 10
 
 # Execute the SLS to open applications on the Windows server
 echo "Running SLS to open applications on the Windows server..."
-salt 'win-srv' state.apply iniciarAplicacion
+salt '$serverAplicaciones' state.apply iniciarAplicacion
 
 # Check if the execution of the open applications SLS was successful
 if [ $? -eq 0 ]; then
