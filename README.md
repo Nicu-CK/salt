@@ -19,6 +19,7 @@ Este repositorio contiene scripts y estados SLS diseñados para automatizar:
 1. Ejecuta el script `apprdp.sh` desde el directorio donde se encuentran los programas de Salt.
 2. Asegúrate de que los minions estén instalados en los equipos y conectados al master.
 3. Para definir qué aplicaciones se abrirán automáticamente, edita el archivo `/files/datos.csv` siguiendo su estructura.
+4. Este script funciona solo para un server cada vez que se quiera abrir aplicaciones. Para mas de uno se deben tener en dos csv distintos y cambiar los equipos en el script `apprdp.sh` por los que se vaya a usar con su nombre de salt minion.
 
 ---
 
