@@ -52,6 +52,7 @@ Este repositorio contiene scripts y estados SLS diseñados para automatizar:
 
 - Utiliza el archivo `/files/hostsLinux.csv` para definir los equipos donde instalar `salt-minion`.
 - Ejecuta el script `minionLinux.sh`. Si no existe `LinuxGroup.yml`, se generará automáticamente.
+- Se debe cambiar la ip del servidor de zabbix al que se quiere unir en el sls.
 
 ### 📁 Archivos Relevantes
 
