@@ -25,7 +25,7 @@ foreach ($fila in $datos) {
         # Crear un archivo .rdp temporal
         $rdpPath = "$env:TEMP\$usuario.rdp"
         @"
-full address:s:$server
+full address:s:"${server}.${domain}"
 username:s:$domain\$usuario
 authentication level:i:2
 prompt for credentials:i:0
