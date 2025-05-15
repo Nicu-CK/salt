@@ -17,7 +17,7 @@ foreach ($fila in $datos) {
     $server = $fila.ServerName
     # Solo ejecutar si ShouldRun está en 'true' o 'yes'
     if ($shouldRun -match "^(?i)true|yes$") {
-        Write-Host "Conectando a $usuario@$servidorFijo"
+        Write-Host "Conectando a $usuario@$server"
 
         # Guardar credenciales (esto almacena las credenciales para RDP)
         cmdkey /generic:"$server" /user:$usuario /pass:$password
